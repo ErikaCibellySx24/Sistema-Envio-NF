@@ -10,14 +10,14 @@ app.use(express.json());
 
 const upload = multer({ dest: "backend/uploads/" });
 
-// 🔹 Rota para upload de arquivos PDF
+// Rota para upload de arquivos PDF
 app.post("/upload", upload.single("file"), (req, res) => {
   const { originalname, filename } = req.file;
   console.log(`Arquivo recebido: ${originalname} → ${filename}`);
   res.json({ message: "Upload realizado com sucesso!", file: filename });
 });
 
-// 🔹 Rota para checklist
+// Rota para checklist
 app.get("/checklist", (req, res) => {
   res.json([
     "Nota Fiscal",
@@ -29,7 +29,7 @@ app.get("/checklist", (req, res) => {
   ]);
 });
 
-// 🔹 Rota de envio (simulada)
+// Rota de envio (simulada)
 app.post("/enviar", (req, res) => {
   const { email, assunto, corpo } = req.body;
   console.log(`Simulando envio para ${email}`);
